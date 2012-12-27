@@ -1,6 +1,12 @@
 # Plugin's routes
 # See: http://guides.rubyonrails.org/routing.html
 
+#controller :scrum2b_issues do
+#  get 'scrum/list', :to => 'scrum2b_issues#index'
+#  get 'scrum/board', :to => 'scrum2b_issues#board'
+#end
+
+
 match 'scrum2b/list' => 'scrum2b_issues#index'
 match 'scrum2b/board' => 'scrum2b_issues#board'
 match 'scrum2b/update_status' => 'scrum2b_issues#update_status'
