@@ -74,6 +74,7 @@ class Scrum2bIssuesController < ApplicationController
     if params[:session]
       session[:view_issue] = params[:session]
     end
+
     if session[:view_issue] == "list"
       redirect_to :action => "index" ,:project_id =>  params[:project_id]
       return
@@ -85,7 +86,7 @@ class Scrum2bIssuesController < ApplicationController
     @list_versions_open = @project.versions.where(:status => "open")
     @list_versions_closed = @project.versions.where(:status => "closed")
     @member = @project.assignable_users
-    @id_member = @member.collect{|id_member| id_member.id}
+    @id_member = @member.collect{ |id_member| id_member.id }
     @id_version  = params[:select_version]
     @select_issues  = params[:select_member]
     @sprints = @project.versions.where(:status => "open")
@@ -224,7 +225,11 @@ class Scrum2bIssuesController < ApplicationController
   def setting_warning
     
   end
-  
+
+  def sort_issues
+    render :board
+  end
+
   private
 
   def find_project
